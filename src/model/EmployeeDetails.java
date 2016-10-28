@@ -1,35 +1,43 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
  //This tells hibernate where the table is located and the name of teh table
  @Entity
- @Table (name="EMPLOYEE_DETAILS")
+ @Table (name="EmployeeDetails")
  public class EmployeeDetails implements Serializable {
     
     // this tells hibernate that this is the prmary key
     //and the name of the column in the database 
-    @Id
-    @Column (name="EMPLOYEE_ID") // this can be placed on top of the getter
+    @Id @GeneratedValue
+    @Column (name="EmployeeId") // this can be placed on top of the getter
     private int employeeId;
     
-    @Column (name="EMPLOYEE_NAME") // this can be placed on top of the getter
+    @Column (name="EmployeeName") // this can be placed on top of the getter
     private String employeeName;
     
-    @Column (name="EMPLOYEE_SENIORITY") // this can be placed on top of the getter
+    @Column (name="EmployeeSeniority") // this can be placed on top of the getter
     private int employeeSeniority;
     
-    @Column (name="EMPLOYEE_HIRE_DATE")
+    @Column (name="EmployeeHireDate")
     @Temporal (TemporalType.DATE)
     private Date dateHired;
     
+    @OneToMany (targetEntity = Activity.class, mappedBy = "employee")
+    @Column (name="EmployeeActivity") // defines the name of the database column
+    private Collection<Activity> activity = new ArrayList<>();
+
 
     //GETTERS
     public int getEmployeeId() {
@@ -48,7 +56,11 @@ import javax.persistence.TemporalType;
         return dateHired;
     }
 
-    
+    public Collection<Activity> getActivity() {
+        return activity;
+    }
+
+
     //SETTERS
     public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
@@ -66,6 +78,8 @@ import javax.persistence.TemporalType;
         this.dateHired = dateHired;
     }
 
-    
-     
+    public void setActivity(Collection<Activity> activity) {
+        this.activity = activity;
+    }
+
 }

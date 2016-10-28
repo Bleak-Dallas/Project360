@@ -30,11 +30,12 @@
  
     <!-- Drop the existing tables and create new one if they do not exist -->
  
-    <property name="hbm2ddl.auto">update</property>
+    <property name="hbm2ddl.auto">create</property>
  
     <!-- Mention here all the model classes along with their package name -->
  
     <mapping class="model.EmployeeDetails"/>
+    <mapping class="model.Activity"/>
       
     </session-factory>
 </hibernate-configuration>
