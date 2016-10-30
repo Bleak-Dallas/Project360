@@ -5,11 +5,7 @@
  */
 package view;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedHashMap;
-import model.EmployeeDetails;
-import model.EmployeeMap;
 
 
 public class EmployeeView {
@@ -18,12 +14,12 @@ public class EmployeeView {
     public static final String BLUE = "\u001B[34m";  // Blue color
     public static final String GREEN = "\u001B[32m"; // Green color
     public static final String CYAN = "\u001B[36m"; // Cyan color
-    public static final String PURPLE = "\u001B[35m";
+    public static final String PURPLE = "\u001B[35m"; // Purple color
     public static final String RESET = "\u001B[0m"; //Reset code
     
     /***********************************************************************
      * DISPLAY EMPLOYEE INFORMATION
-     * @param empD
+     * @param employeeMap
      **********************************************************************/
     public void displayEmployeeInfo(LinkedHashMap<String, String> employeeMap) {
         System.out.println(BLUE + "Display Class Information" + RESET);
